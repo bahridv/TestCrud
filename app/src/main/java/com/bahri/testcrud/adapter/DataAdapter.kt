@@ -1,6 +1,7 @@
 package com.bahri.testcrud.adapter
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bahri.testcrud.R
+import com.bahri.testcrud.UpdateActivity
 import com.bahri.testcrud.model.DataProduk
 import com.bahri.testcrud.model.ResponseDelate
 import com.bahri.testcrud.network.ApiService
@@ -22,6 +24,7 @@ RecyclerView.Adapter<DataAdapter.viewHolder>() {
         val Title : TextView = itemView.findViewById(R.id.tv_title)
         val Content : TextView = itemView.findViewById(R.id.tv_content)
         val delate : ImageView = itemView.findViewById(R.id.iv_delate)
+        val update : ImageView = itemView.findViewById(R.id.iv_update)
 
     }
 
@@ -34,6 +37,16 @@ RecyclerView.Adapter<DataAdapter.viewHolder>() {
         val data = ListData[position]
         holder.Title.text = data.title
         holder.Content.text = data.content
+
+        holder.update.setOnClickListener {
+            val i = Intent(holder.itemView.context, UpdateActivity::class.java)
+            i.putExtra("id", data.id)
+            i.putExtra("title", data.title)
+            i.putExtra("complete", data.complete)
+            i.putExtra("content", data.content)
+            holder.itemView.context.startActivity(i)
+        }
+
         holder.delate.setOnClickListener {
             ApiService.endNetwork.delateTodo("${data.id}").enqueue(object : Callback<ResponseDelate>{
                 override fun onResponse(

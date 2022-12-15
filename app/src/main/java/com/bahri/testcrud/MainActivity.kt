@@ -39,6 +39,11 @@ class MainActivity : AppCompatActivity() {
         getData()
     }
 
+    override fun onStart(){
+        super.onStart()
+        getData()
+    }
+
     private fun getData() {
         binding.sfContent.isRefreshing = false
         ApiService.endNetwork.getList().enqueue(object  : Callback<ResponseList>{

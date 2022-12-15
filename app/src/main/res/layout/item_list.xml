@@ -21,7 +21,8 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.19">
 
         <TextView
             android:id="@+id/tv_title"
@@ -36,6 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Content"
+            android:layout_marginTop="10dp"
             android:textColor="@color/black"
             android:textSize="14sp" />
 
@@ -46,9 +48,17 @@
         android:id="@+id/iv_delate"
         android:layout_width="30dp"
         android:layout_height="30dp"
+        android:layout_marginBottom="10dp"
         android:src="@drawable/ic_baseline_delete_24"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/linearLayout" />
+
+    <ImageView
+        android:id="@+id/iv_update"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_baseline_edit_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_delate" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
